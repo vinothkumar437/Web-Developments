@@ -1,0 +1,40 @@
+<html>
+<head>
+</head>
+<body>
+Select your boot source: <select id="option">
+  <option value="cirros">Cirros</option>
+  <option value="rhel7">RHEL 7</option>
+  <option value="centos7">CentOS 7</option>
+  <option value="windows10">Windows 10</option>
+</select>
+<br/>
+<br/>
+Your Selected Flavor: <input type="text" name="flavor" id="flavor" value="m1.small" readonly><br/><br/>
+Enter Your Email ID: <input type="email" name="email" id="email"><br/><br/>
+
+<button type="submit" id="submit">submit</button>
+<div id="res"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#submit").click(function(){
+     var option = $("#option").val();
+     var flavor = $("#flavor").val();
+     var email = $("#email").val();
+     alert('Your Request has been processed successfully');
+     $.ajax({
+         url: "/cgi-bin/post.py",
+         method: "post",
+         data: {option: option, flavor: flavor, email: email },
+         success: function(data){
+          $("#res").html(data)
+        }
+   });
+ });
+});
+
+</script>
+</body>
+</html>
