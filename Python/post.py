@@ -26,7 +26,7 @@ thisdict = {
   "email": uemail
 }
 
-cmd = 'ansible-playbook -i /home/vinoth/osp/inventory /home/vinoth/osp/main.yaml -e '
+cmd = 'ansible commands '
 
 view = '"{}"'.format(thisdict)
 
